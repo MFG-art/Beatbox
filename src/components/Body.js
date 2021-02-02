@@ -1,9 +1,9 @@
 import React from "react";
 
-let kick = new Audio("./audio/kick drum.wav");
-let snare = new Audio("./audio/snare drum.wav");
+let kick = new Audio("./audio/bass_sample.mp3");
+let snare = new Audio("./audio/clap_sample.mp3");
 let playPause = false;
-let tempo = 120;
+let tempo = 100;
 
 function Loop() {
   let kickPat = [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0];

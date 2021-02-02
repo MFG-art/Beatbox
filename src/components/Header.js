@@ -2,10 +2,8 @@ import React from "react";
 
 function Header() {
   return (
-    <div>
-      <div className="main thing">
-        <h1>Mauricio's Beatbox</h1>
-      </div>
+    <div className="header">
+      <h1 style={{ height: "100%", margin: "0" }}>Mauricio's Beatbox</h1>
     </div>
   );
 }
