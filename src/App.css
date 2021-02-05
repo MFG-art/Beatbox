@@ -1,54 +1,30 @@
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.step-on {
+  background-color: rgb(211, 161, 95);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.step-off {
+  background-color: tan;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.step {
-  width: 5%;
-  height: 80%;
-  margin: 1px;
+.step-off,
+.step-on {
+  width: 4.5%;
+  height: 95%;
   float: left;
-  background-color: slategray;
-  outline: black;
+  border-radius: 10px;
+  margin: 0px 3px;
+  box-shadow: 2px 2px darkslategray;
+  box-sizing: border-box;
 }
 
 .row {
@@ -60,10 +36,71 @@ body {
 .footer {
   height: 10vh;
   width: 100%;
-
   background-color: cornflowerblue;
+  color: white;
+  padding: 1%;
 }
 
 .body {
   height: 80vh;
+}
+
+.sample-name {
+  margin: 2px 20px 2px 2px;
+  padding: 5px;
+  box-shadow: 2px 2px darkslategray;
+  width: 15%;
+  min-height: 80%;
+  text-align: center;
+  color: white;
+  float: left;
+  background-color: gray;
+  box-sizing: border-box;
+}
+
+.grid {
+  background-color: lightgray;
+  border-radius: 2px;
+  width: 80vw;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+  border: 1px solid darkgray;
+  box-shadow: 1px 1px 5px darkslategray;
+}
+
+@media only screen and (max-width: 1150px) {
+  .grid {
+    width: 90%;
+    padding: 5px;
+    margin: auto;
+    margin-top: 50px;
+  }
+  .sample-name {
+    padding: 5px;
+    margin: 1px 5px 1px 1px;
+    width: 15%;
+    font-size: small;
+  }
+  .step-on,
+  .step-off {
+    margin: 0px 1px;
+    box-shadow: 2px 2px darkslategray;
+    border-radius: 5px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .grid {
+    width: 96%;
+    padding: 1px;
+    margin: 0px;
+    margin-top: 50px;
+    box-shadow: 0px;
+  }
+  .sample-name {
+    margin: 1px 5px 1px 1px;
+    font-size: x-small;
+    width: 15%;
+  }
 }
