@@ -7,11 +7,10 @@
  */
 
 import React from "react";
-
-let kick = new Audio("./audio/bass_sample.mp3");
-let snare = new Audio("./audio/clap_sample.mp3");
+let kick = new Audio("./audio/kick_drum.mp3");
+let snare = new Audio("./audio/snare_drum.mp3");
 let playPause = false;
-let tempo = 100;
+let tempo = 80;
 
 //The Beatbox class contains the entire drum machine application including the grid, play/pause button, and save options
 //todo: implement play/pause, save buttons. Add option to name patterns? WILL THE SAMPLE PLAYBACK
@@ -60,6 +59,30 @@ class Beatbox extends React.Component {
     this.onNoteUpdate = this.onNoteUpdate.bind(this);
   }
 
+  Loop() {
+    let stepLength = 1000 * (15 / tempo);
+    let i = 0;
+
+    let step = setInterval(() => {
+      console.log(i);
+      if (this.state.kickNotes[i] === true) {
+        kick.currentTime = 0;
+        kick.play();
+        console.log(this.state.kickNotes[i]);
+      }
+
+      if (this.state.snareNotes[i] === true) {
+        snare.currentTime = 0;
+        snare.play();
+        console.log(this.state.snareNotes[i]);
+      }
+
+      i++;
+      i %= 16;
+      if (!playPause) clearInterval(step);
+    }, stepLength);
+  }
+
   onNoteUpdate(note) {
     console.log("inside the beatbox component");
     console.log(this.state);
@@ -86,29 +109,6 @@ class Beatbox extends React.Component {
     console.log(this.state);
   }
 
-  Loop() {
-    let kickPat = this.state.kickNotes;
-    let snarePat = this.state.snareNotes;
-    let stepLength = 1000 * (15 / tempo);
-    let i = 0;
-
-    let step = setInterval(() => {
-      console.log(i);
-      if (kickPat[i] === true) {
-        kick.currentTime = 0;
-        kick.play();
-      }
-
-      if (snarePat[i] === true) {
-        snare.currentTime = 0;
-        snare.play();
-      }
-
-      i++;
-      i %= 16;
-      if (!playPause) clearInterval(step);
-    }, stepLength);
-  }
   render() {
     return (
       <div
@@ -117,6 +117,16 @@ class Beatbox extends React.Component {
           this.onNoteUpdate(note);
         }}
       >
+        <button
+          onClick={() => {
+            playPause = !playPause;
+            if (playPause) {
+              this.Loop();
+            }
+          }}
+        >
+          Play / Pause
+        </button>
         <Grid
           kickNotes={this.state.kickNotes}
           snareNotes={this.state.snareNotes}
